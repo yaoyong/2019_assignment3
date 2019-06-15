@@ -1,5 +1,5 @@
-class Solution {
-    public String decodeString(String s) {
+class ExtractCompressedString{
+    public String ExtractString(String s) {
         Stack<Exp> stack = new Stack<>();
  
         Exp e = new Exp(1);
@@ -24,31 +24,26 @@ class Solution {
             } else {
                 stack.peek().list.add(new Exp(c));
             }
-        }
- 
+        } 
         Exp root = stack.pop();
- 
-        return root.getStr();
+         return root.getStr();
     }
 }
  
 class Exp {
     int count;
     List<Exp> list;
-    char c;
- 
+    char c; 
     public Exp(int num) {
         count = num;
         list = new ArrayList<>();
     }
- 
     public Exp(char ch) {
         c = ch;
     }
  
     public String getStr() {
-        String result = "";
- 
+        String result = ""; 
         if (list != null) {
             for (int i = 0; i < count; i++) {
                 for (Exp e : list) {
@@ -58,7 +53,6 @@ class Exp {
         } else {
             result += c;
         }
- 
-        return result;
+         return result;
     }
 }
