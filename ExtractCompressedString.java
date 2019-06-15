@@ -1,5 +1,5 @@
-class ExtractCompressedString{
-    public String ExtractString(String s) {
+class Solution{
+    public String decodeString(String s) {
         Stack<Exp> stack = new Stack<>();
  
         Exp e = new Exp(1);
@@ -10,7 +10,7 @@ class ExtractCompressedString{
             char c = s.charAt(i);
             if (c >= '0' && c <= '9') {
                 num = num + c;
-            } else if (c == '{') {
+            } else if (c == '{') { // match the {}
                 if (num.length() == 0)
                     continue;
  
@@ -18,7 +18,7 @@ class ExtractCompressedString{
                 num = "";
                 Exp exp = new Exp(value);
                 stack.push(exp);
-            } else if (c == '}') {
+            } else if (c == '}') { // match the {}
                 Exp top = stack.pop();
                 stack.peek().list.add(top);
             } else {
